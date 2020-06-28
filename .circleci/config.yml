@@ -1,0 +1,14 @@
+version: 2.1
+
+jobs:
+  fakebuild:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run: grep -iq pass ./testfile
+
+workflows:
+  fakebuild:
+    jobs:
+      - fakebuild
